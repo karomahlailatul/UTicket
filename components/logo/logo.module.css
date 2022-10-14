@@ -1,0 +1,10 @@
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .logo{
+        justify-content: flex-start;
+    }
+}
