@@ -85,6 +85,7 @@
 }
 
 .seperator{
+    width: 100%;
     border: 1px solid #b0b0b0;
 }
 
@@ -111,11 +112,23 @@
     border-radius: 6px;
 }
 
+.accept-terms{
+    margin-top: 28px;
+}
+
 .accept-label{
     font-weight: 400;
     font-size: 16px;
+    margin-left: 15px;
     line-height: 19px;
     color: #595959;
+}
+
+.have-account{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 @media only screen and (max-width: 600px) {

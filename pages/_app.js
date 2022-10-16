@@ -6,6 +6,8 @@ import "../node_modules/@fortawesome/fontawesome-svg-core/styles.css";
 
 import { useEffect, Fragment } from "react";
 import { ToastContainer } from "react-toastify";
+import { Provider } from "react-redux";
+import { wrapper, store } from "../config/redux/store";
 
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
@@ -26,15 +28,16 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <Fragment>
         <Fragment>
+          <Provider store={store}>
             <Component {...pageProps} />
+          </Provider>
         </Fragment>
         <ToastContainer position="top-right" autoClose={2500} hideProgressBar={false} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss={false} draggable pauseOnHover />
-      
     </Fragment>
   );
 };
 
-export default MyApp;
+export default wrapper.withRedux(MyApp)
 
 MyApp.getInitialProps = async ({ ctx }) => {
   const token = ctx.req?.cookies?.token || null;
