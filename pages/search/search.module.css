@@ -1,0 +1,358 @@
+.flight{
+    height: 175px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-image: url('../../assets/img/detailFlight/banner-lg.svg');
+    border: none;
+    border-radius: 0 0 30px 30px;
+    padding: 0 125px;
+}
+
+.flight > div{
+    display: flex;
+    align-items: center;
+}
+
+.flight > div > div:first-of-type{
+    position: relative;
+    bottom: 5px;
+}
+
+.detail{
+    width: 375px;
+    margin-left: 20px;
+}
+
+.detail > div:first-of-type{
+    display: flex;
+    justify-content: space-between;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.detail > div:nth-of-type(2){
+    display: flex;
+    justify-content: space-between;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.detail > div:last-of-type{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.origin,
+.origin:focus,
+.dest,
+.dest:focus{
+    width: 100px;
+    background-color: transparent;
+    color: #FFFFFF;
+    border: none;
+    outline: none;
+}
+
+.dest{
+    text-align: right;
+}
+
+.date{
+    background-color: transparent;
+    color: #FFFFFF;
+    border: none;
+    outline: none;
+    color-scheme: dark;
+}
+
+.qty,
+.class{
+    background-color: transparent;
+    color: #FFFFFF;
+    border: none;
+    outline: none;
+}
+
+.qty > option,
+.class > option{
+    color: #000000;
+}
+
+.change-search,
+.change-search:focus{
+    background-color: transparent;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    height: 40px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.change-search:hover{
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.search-result{
+    width: 100%;
+    display: flex;
+    margin: 20px 100px 0;
+}
+
+.filter-wrap{
+    width: 23%;
+}
+
+.subtitle{
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.subtitle > p{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.reset-filter{
+    background-color: transparent;
+    color: #2391FF;
+    border: none;
+}
+
+.sort{
+    background-color: transparent;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    display: flex;
+
+}
+
+.filters{
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 10px 20px 15px;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
+}
+
+.filters > p{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.hl{
+    width: 100%;
+    border-bottom: 1px solid #9EA0A542;
+    margin: 15px 0;
+}
+
+.options{
+    width: 100%;
+    flex-direction: column;
+}
+
+.options div{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.options div > label{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.pricing{
+    display: flex;
+    align-items: center;
+}
+
+.pricing input,
+.pricing input:focus{
+    border: 1px solid #6B6B6B;
+    border-radius: 5px;
+    padding-left: 10px;
+    outline: none;
+}
+
+.ticket-wrap{
+    width: 60%;
+    margin-left: 50px;
+}
+
+
+/* tikect component */
+
+
+.ticket{
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    padding: 30px 25px 20px;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
+}
+
+.airline{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.airline > span{
+    color: #595959;
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 25px;
+}
+
+.flight-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.schedule{
+    display: flex;
+    align-items: center;
+}
+
+.schedule p{
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.schedule span{
+    color: #6B6B6B;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.frame {
+    width: 30%;
+    /* background-color: rebeccapurple; */
+}
+
+.frame img {
+    /* background-color: rebeccapurple; */
+    width: 100%;
+    object-fit: cover;
+}
+
+.schedule > div:nth-of-type(2){
+    display: flex;
+    position: relative;
+    bottom: 8px;
+    margin: 0 20px;
+}
+
+.duration{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.duration p{
+    color: #595959;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 3px 0 5px;
+}
+
+.duration span{
+    color: #6B6B6B;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.facilities{
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pricetag{
+    position: relative;
+    top: 10px;
+    display: flex;
+    align-items: baseline;
+}
+
+.pricetag p{
+    color: #2395FF;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.pricetag span{
+    color: #979797;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+.select{
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2395FF;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 8px 10px rgba(35, 149, 255, 0.3);
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+#rangeValue {
+  position: relative;
+  display: block;
+  text-align: center;
+  font-size: 6em;
+  color: #999;
+  font-weight: 400;
+}
+.range {
+  width: 400px;
+  height: 15px;
+  -webkit-appearance: none;
+  background: #111;
+  outline: none;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 1);
+}
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #00fd0a;
+  cursor: pointer;
+  border: 4px solid #333;
+  box-shadow: -407px 0 0 400px #00fd0a;
+}
