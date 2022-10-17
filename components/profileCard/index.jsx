@@ -6,13 +6,23 @@ import settingIcon from "../../assets/img/settings.svg";
 import ratingIcon from "../../assets/img/review.svg";
 import logOutIcon from "../../assets/img/logout.svg";
 import Image from 'next/image';
+import Link from 'next/link';
+import Cookies from "js-cookie";
 
 const ProfileCard = () => {
+  const token = Cookies.get("token")
+
+  const handleLogout = () => {
+    if (token !== undefined || token !== null) {
+      Cookies.remove("token")
+    }
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles["photo-container"]}>
-          <Image width={137} height={137} src={userPhoto} alt="photo profile"/>
+          <Image width={137} height={137} src={userPhoto} alt="photo profile" />
         </div>
         <div className={styles.upload}>
           <label className={styles["btn-label"]} htmlFor={"upload-photo"}>
@@ -44,14 +54,12 @@ const ProfileCard = () => {
               <Image src={userIcon} className={styles.userLogo} alt="user" />
               <p>Profile</p>
             </div>
-            <p>{">"}</p>
           </div>
           <div className={styles.bottomsect}>
             <div className={styles.bottomsect}>
               <Image src={ratingIcon} className={styles.rating} alt="user" />
               <p>My Review</p>
             </div>
-            <p>{">"}</p>
           </div>
 
           <div className={styles.bottomsect}>
@@ -59,18 +67,19 @@ const ProfileCard = () => {
               <Image src={settingIcon} className={styles.setting} alt="user" />
               <p>Setting</p>
             </div>
-            <p>{">"}</p>
           </div>
           <div
             className={styles.bottomsect}
             id={styles.logout}
-            // onClick={() => handleSignOut()}
           >
-            <div className={styles.bottomsect}>
-              <Image src={logOutIcon} className={styles.logout} alt="user" />
-              <p>Logout</p>
-            </div>
-            <p>{">"}</p>
+            <Link href="/">
+              <a id={styles["logout-link"]} onClick={handleLogout}>
+                <div className={styles.bottomsect}>
+                  <Image src={logOutIcon} className={styles.logout} alt="user" />
+                  <p>Logout</p>
+                </div>
+              </a>
+            </Link>
           </div>
         </div>
       </div>
