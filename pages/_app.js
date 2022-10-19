@@ -19,7 +19,6 @@ import { far } from "@fortawesome/free-regular-svg-icons";
 library.add(fas, fab, far);
 
 const MyApp = ({ Component, pageProps }) => {
-
   useEffect(() => {
     require("bootstrap/dist/js/bootstrap.bundle.min.js");
     document.title = "WChat | Chatting Everywhere";
@@ -27,17 +26,72 @@ const MyApp = ({ Component, pageProps }) => {
 
   return (
     <Fragment>
-        <Fragment>
-          <Provider store={store}>
-            <Component {...pageProps} />
-          </Provider>
-        </Fragment>
-        <ToastContainer position="top-right" autoClose={2500} hideProgressBar={false} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss={false} draggable pauseOnHover />
+      <Fragment>
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
+        <div>
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+          />
+
+          <link
+            rel="stylesheet"
+            href="plugins/fontawesome-free/css/all.min.css"
+          />
+
+          <link
+            rel="stylesheet"
+            href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+          />
+
+          <link
+            rel="stylesheet"
+            href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css"
+          />
+
+          <link
+            rel="stylesheet"
+            href="plugins/icheck-bootstrap/icheck-bootstrap.min.css"
+          />
+
+          <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css" />
+
+          <link rel="stylesheet" href="dist/css/adminlte.min.css" />
+
+          <link
+            rel="stylesheet"
+            href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css"
+          />
+
+          <link
+            rel="stylesheet"
+            href="plugins/daterangepicker/daterangepicker.css"
+          />
+
+          <link
+            rel="stylesheet"
+            href="plugins/summernote/summernote-bs4.min.css"
+          />
+        </div>
+      </Fragment>
+      <ToastContainer
+        position="top-right"
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+      />
     </Fragment>
   );
 };
 
-export default wrapper.withRedux(MyApp)
+export default wrapper.withRedux(MyApp);
 
 MyApp.getInitialProps = async ({ ctx }) => {
   const token = ctx.req?.cookies?.token || null;
