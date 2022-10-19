@@ -21,7 +21,7 @@ export default function middleware(request = NextRequest) {
     console.log("valid");
   } else {
     if (url.includes("/profile") || url.includes("/admin")) {
-      urlRedirect.pathname = "/login";
+      urlRedirect.pathname = "/auth/login";
       return NextResponse.redirect(urlRedirect);
     }
   }
