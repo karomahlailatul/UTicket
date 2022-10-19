@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   env: {
-    API_BACKEND: process.env.API_BACKEND,
+    API_BACKEND: `https://uticket-v2-be.vercel.app/api/v1`,
   },
   images: {
     domains: ['drive.google.com'],

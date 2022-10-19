@@ -1,6 +1,7 @@
 import { Fragment } from "react";
-
+import styles from "../styles/404.module.css";
 import { useRouter } from "next/router";
+import Footer from "../components/modules/footer/Footer";
 
 import Image from "next/image";
 
@@ -9,26 +10,18 @@ const Costum404 = () => {
 
   return (
     <Fragment>
-      <div className="page-not-found">
-        <div className="container bg-white">
-          <div className="col-12 justify-content-center text-center">
-            <a
-              className="d-flex justify-content-center mb-4"
-              onClick={() => router.push("/")}
-            >
-              <Image
-                src={"/assets/logo_colour.svg"}
-                width="310px"
-                height="78px"
-                className="App-logo"
-                alt=""
-              />
-            </a>
-            <div className="d-flex justify-content-center ">
-              <p className="fs-1 fw-bold text-info">404|</p>
-              <p className="fs-1 fw-bold text-info">Page Not Found</p>
-            </div>
+      <div id={styles.notfound}>
+        <div className={styles.notfound}>
+          <div className={styles.notfound404}>
+            <div></div>
+            <h1>404</h1>
           </div>
+          <h2>Page not found</h2>
+          <p>
+            The page you are looking for might have been removed had its name
+            changed or is temporarily unavailable.
+          </p>
+          <a href="/">home page</a>
         </div>
       </div>
     </Fragment>
