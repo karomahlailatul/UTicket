@@ -28,6 +28,7 @@ export const login = (data, router, setLoading) => async (dispatch) => {
         console.log('user: ', user);
         toast.success("Sign In Success. Welcome " + user.name, { toastId: "successSignIn" });
         Cookies.set("token", user.token);
+        Cookies.set("user_id", user.id);
         dispatch({ type: "LOGIN_SUCCESS", payload: user });
         router.push("/");
         setLoading(false);

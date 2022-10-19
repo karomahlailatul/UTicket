@@ -15,7 +15,8 @@ const envelope = findIconDefinition({ prefix: 'far', iconName: 'envelope' })
 const bell = findIconDefinition({ prefix: 'far', iconName: 'bell' })
 const alignRight = findIconDefinition({ prefix: 'fas', iconName: 'align-right' })
 
-const NavbarProfile = () => {
+const NavbarProfile = ({ setFocus }) => {
+  console.log("setFocus: ", setFocus);
   const [token, setToken] = useState(null)
 
   useEffect(() => {
@@ -25,7 +26,6 @@ const NavbarProfile = () => {
       setToken(tokenCookies)
     }
   }, [token])
-
 
   return (
     <Navbar expand="lg" className="p-0">
@@ -43,10 +43,10 @@ const NavbarProfile = () => {
             <Nav className="me-auto" id={styles["item-menu"]}>
               <Searchbar />
               <div className={styles["btn-group"]}>
-                <button
+                <button  
                   type="button"
                   className={styles["menu-btn"]}
-                // onClick={"#"}
+                  onClick={() => setFocus("find-ticket")}
                 >
                   Find Ticket
                 </button>
@@ -54,6 +54,7 @@ const NavbarProfile = () => {
                 <button
                   type="button"
                   className={styles["menu-btn"]}
+                  onClick={() => setFocus("my-booking")}
                 >
                   My Booking
                 </button>
