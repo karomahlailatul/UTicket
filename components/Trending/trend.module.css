@@ -1,0 +1,50 @@
+.color{
+    color:#2395FF;
+}
+
+.cards{
+    display: flex;
+}
+
+.card{
+    height: 220px;
+    width: 300px !important;
+    display: flex;
+    flex-direction: column;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 25px;
+    background-image: url('../../assets/img/home/japan.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 10px;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
+}
+
+.card p{
+    padding-top: 150px;
+    padding-left: 15px;
+}
+
+.thumbnail{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    height: 100%;
+}
+
+
+
+.detail{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    margin-top: -20px;
+    padding: 5px 15px 0;
+}
+
+.detail span{
+    font-size: 24px;
+    font-weight: 600;
+}

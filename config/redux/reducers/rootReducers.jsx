@@ -1,12 +1,13 @@
 import { combineReducers } from "redux";
+import { AirlinesReducer } from "./airlineReducer";
 import authReducers  from "./authReducers";
-import creditCardReducers from "./creditCardReducers";
-import profileReducers from "./profileReducers";
+import { DestinationAction } from "./destinationReducer";
+
 
 const rootReducer = combineReducers({
     auth: authReducers,
-    profile: profileReducers,
-    cc: creditCardReducers,
+    destination: DestinationAction,
+    airlines: AirlinesReducer,
 })
 
 export default rootReducer;
