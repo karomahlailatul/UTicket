@@ -3,3 +3,17 @@
     height:100%;
     background-color: #E5E5E5;
 }
+
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    padding: 50px 70px 50px 70px;
+    justify-content: space-between;
+}
+.sect1{
+    padding:10px;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    background: #FFFFFF;
+    width: 28%;
+}

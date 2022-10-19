@@ -40,7 +40,8 @@
     justify-content: space-between;
     gap: 15px;
 }
-.input{
+.input, 
+.input-disabled{
     width: 100%;
     margin-bottom: 50px;
     background: none;
@@ -55,11 +56,17 @@
     transition: 400ms;
     color: #000000;
 }
+
+.input-disabled{
+    cursor: no-drop;
+}
+
 .input:focus{
     border-bottom:2px solid #2395FF;
 }
-.input::placeholder{
-    color: #b4b4b4;;
+.input::placeholder,
+.input-disabled::placeholder{
+    color: #b4b4b4;
 }
 
 .contact{
@@ -92,6 +99,24 @@ text-align: right;
     box-shadow: 0 0px 10px 3px rgba(35, 149, 255, 0.5);
     transform: translateY(-1px);
 }
+.btn-cancel{
+    width: 150px;
+    height: 50px;
+    padding: 5px 0 5px 0;
+    background: #f40404;
+    border: none;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #FFFFFF;
+    transition: 300ms;
+    margin-right: 1rem;
+}
+.btn-cancel:hover{
+    box-shadow: 0 0px 10px 3px rgba(244, 4, 4, 0.5);
+    transform: translateY(-1px);
+}
 .settingText{
     text-align: right;
     color:#2395FF;
@@ -108,4 +133,8 @@ text-align: right;
 
 .label-form{
     color: #9B96AB;
+}
+
+.not-disabled{
+    color: #000000;
 }

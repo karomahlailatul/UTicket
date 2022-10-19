@@ -1,0 +1,106 @@
+.tab {
+    width: 70%;
+}
+
+.card-body {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body-second{
+    padding: 2rem 2rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.row1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: #2395FF;
+}
+
+.sub-title {
+    width: auto;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    color: #000000;
+}
+
+.order-history,
+.view-details{
+    text-decoration: none;
+    width: auto;
+}
+
+.destination{
+    width: 20%;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
+
+.dest-city{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 22px;
+    color: #000000;
+}
+
+.plane-icon{
+    width: 24px;
+    height: 24px;
+}
+
+.airlines{
+    font-weight: 400;
+    font-size: 14px;
+    color: #979797;
+}
+
+.status-title{
+    font-weight: 600;
+    font-size: 14px;
+    color: #7A7A7A;
+    margin: 0;
+}
+
+.row-status{
+    width: 35%;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+.waiting-status{
+    padding: 0.5rem 1rem;
+    height: 36px;
+    background: #FF7F23;
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.issue-status{
+    padding: 0.5rem 1rem;
+    height: 36px;
+    background: #4FCF4D;
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.bottom-card{
+    padding: 0 2rem 1.5rem;
+}
