@@ -30,7 +30,7 @@ export const login = (data, router, setLoading) => async (dispatch) => {
         Cookies.set("token", user.token);
         Cookies.set("user_id", user.id);
         dispatch({ type: "LOGIN_SUCCESS", payload: user });
-        router.push("/");
+        router.push("/home");
         setLoading(false);
     } catch (error) {
         toast.warning(error.response.data.message, { toastId: "errorSignIn" });

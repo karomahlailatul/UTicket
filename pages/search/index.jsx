@@ -4,6 +4,7 @@ import styles from './search.module.css';
 import plane from '../../assets/img/search/logo-plant.svg'
 import plant from '../../assets/img/booking/plant.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from 'next/link';
 import GarudaLogo from '../../assets/img/search/Logo-garuda.svg'
 import AirAsia from '../../assets/img/search/Logo-AirAsia.svg'
 import LeonAir from '../../assets/img/search/Logo-LeonAir.svg';
@@ -12,6 +13,7 @@ import { findIconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { useDispatch, useSelector } from 'react-redux';
 import { AirlineAction } from '../../config/redux/actions/airlineAction';
 import { DestinationAction } from '../../config/redux/actions/destinationAction';
+import axios from 'axios';
 
 const arrow_switch = findIconDefinition({prefix: "fas", iconName: "arrow-right-arrow-left"})
 const wifi = findIconDefinition({prefix: "fas", iconName: "wifi"})
@@ -20,16 +22,63 @@ const koper = findIconDefinition({prefix: "fas", iconName: "suitcase-rolling"})
 
 
 function Search() {
-  const dispatch = useDispatch();
-  const datas = useSelector((state) => state.airlines);
-  const [search, setSearch] = useState("")
-  
-  // console.log(datas.data)
-  // console.log(search)
-  
-  useEffect(() =>{
-    dispatch(AirlineAction({search: search}))
-    // handleChange()
+  // const dispatch = useDispatch();
+  // const datas = useSelector((state) => state.airlines);
+  // const [search, setSearch] = useState('')
+  const [dataFrom, setDataFrom] = useState([])
+  const [dataTo, setDataTo] = useState([])
+  // const [dataCity, setDataCity] = useState([])
+  // const [dataCityTo, setDataCityTo] = useState([])
+  const [dataTiket, setDataTiket] = useState([])
+  const [idFrom, setIdFrom] = useState('')
+  const [idTo, setIdTo] = useState('')
+  console.log(dataTiket)
+  // console.log(idFrom)
+  // console.log(idTo)
+  // console.log(dataFrom)
+  // console.log(dataCity[0].id)
+  // console.log(dataCityTo[0].id)
+  // data.map(iterm =>{
+  //   console.log(iterm.city)
+  // })
+  // dataTiket.map(item =>{
+  //   console.log(item)
+  // })
+  const fetch = async(e) =>{
+    // if(dataCity[0] && dataCityTo[0]){
+    //   setIdFrom(dataCity[0].id)
+    //   setIdTo(dataCityTo[0].id)
+    // }else{
+    //   return;
+    // }
+    const url = await axios.get(`${process.env.API_BACKEND}flight?search_option_1=${idFrom}&searchby_option_1=airport_depature&search_option_2=${idTo}&searchby_option_2=airport_arrive`)
+      // console.log(url.data.data)
+      const result = url.data.data
+      setDataTiket(result)
+    }
+    const fetchCountryFrom = async(e) =>{
+      const url = await axios.get(`${process.env.API_BACKEND}airport?search=${e}&searchby=country&sortby=city&sort=asc&limit=1000`)
+        // console.log(url.data.data)
+        const result = url.data.data
+        console.log(result)
+        
+          setDataFrom(result)
+          // setDataCity(result)
+        
+      }
+      const fetchCountryTo = async(e) =>{
+        const url = await axios.get(`${process.env.API_BACKEND}airport?search=${e}&searchby=country&sortby=city&sort=asc&limit=1000`)
+          // console.log(url.data.data)
+          const result = url.data.data
+          console.log(result)
+              setDataTo(result)
+              // setDataCityTo(result)
+        }
+    const handleSearch = (e) =>{
+      fetch()
+    }
+    useEffect(() =>{
+      handleSearch ()
   }, [])
 
   return (
@@ -41,27 +90,84 @@ function Search() {
                 </div>
 
                 <div className={styles.detail}>
-                <div>
-                    <span className='fs-6'>From</span>
-                    <span  className='fs-6'>To</span>
-                </div>
+                  <div className="row w-100 ">
+                    <div className='col'>
+                        <span className='fs-6'>From</span>
+                    </div>
+                    <div className='col text-end'>
+                      <span  className='fs-6'>To</span>
+                    </div>
+                  </div>
 
-                <div className='fs-4'>
-                    <input
-                    name="origin"
-                    type="text"
-                    className={styles.origin}
-                    onChange={(e) =>{
-                      setSearch(e.target.value)
-                      dispatch(AirlineAction({search: search}))
+                <div className='fs-5 w-100 '>
+                  <div className="column w-100">
+                      <div>
+                      <input
+                      // name="origin"
+                      type="text"
+                      className={`${styles.origin} `}
+                      // value={title.city}
+                      placeholder="country"
+                      onChange={(e) =>{
+                        fetchCountryFrom(e.target.value)
+                        
+                      }}
+                      />
+  
+                      </div>
+                    <div className='d-grid'>
+                    <select
+                    className={` w-100`}
+                    placeholder= 'city'
+                    onChange={(e) => {
+                      // setTitle({...title, city: e.target.value})
+                      setIdFrom(e.target.value)
+                      fetch()
                     }}
-                    />
+                    >
+                    {
+                      dataFrom?.map((item, index) =>(
+                      <option value={item.id} 
+                      key={index} 
+                        >{item.city}{` (${item.name})`}</option>
+                        ))
+                      }
+                      </select>
+                    </div>
+
+                  </div>
                     <FontAwesomeIcon icon={arrow_switch} />
-                    <input
-                    type="text"
-                    className={styles.dest}
-                    // onChange={handleChange}
-                    />
+                    <div className="column ms-3">
+                      <div>
+                      <input
+                      type="text"
+                      className={`${styles.origin} `}
+                      placeholder="country"
+                      onChange={(e) =>{
+                        fetchCountryTo(e.target.value)
+                      }}
+                      />
+  
+                      </div>
+                    <div>
+                    <select
+                    className={`styles.qty w-100`}
+                    onChange={(e) => {
+                      setIdTo(e.target.value)
+                      fetch()
+                    }}
+                    >
+                    {
+                      dataTo?.map((item, index) =>(
+                      <option value={item.id}
+                      key={index}
+                        >{item.city} {` (${item.name})`}</option>
+                        ))
+                      }
+                      </select>
+                    </div>
+
+                  </div>
                 </div>
 
                 <div className='fs-6'>
@@ -101,6 +207,7 @@ function Search() {
             <button
                 type="button"
                 className={`${styles["change-search"]}`}
+                onClick={handleSearch}
             >Change Search</button>
         </div>
         <div className={styles["search-result"]}>
@@ -275,11 +382,11 @@ function Search() {
                 </div>
                 <div className={styles.pricing}>
                   <label>Max. price</label>
-                  {/* <input
+                  <input
                     // value='$ 2.00'
                     type="range"
                     step="10000"
-                  /> */}
+                  />
                   {/* <div>
                   <span id="rangeValue">0</span>
                   <input  type="range" name="0" min="0" max="1000"  
@@ -309,8 +416,10 @@ function Search() {
             </div>
 
             <div>
-              {datas &&
-                datas?.data?.map((item, index) =>(
+              {
+                dataTiket?.map((item, index) =>
+                
+                (
                 <div className={styles.ticket} key={index}>
                     <div className={styles.airline}>
                         <div style={{ width: "100px" }}>
@@ -321,9 +430,12 @@ function Search() {
 
                     <div className={styles["flight-info"]}>
                         <div className={styles.schedule}>
-                        <div>
-                            <p>IND</p>
-                            <span>9.00</span>
+                        <div >
+                            <p className='text-center'>{`${item.airport_depature_country_code}`}
+                            </p>
+                            <small className='fs-6'>{`(${item.airport_arrive_name})`}</small>
+                            <br />
+                            {/* <span>{item.depature}</span> */}
                         </div>
 
                         <div>
@@ -331,25 +443,41 @@ function Search() {
                         </div>
 
                         <div>
-                            <p>JPN</p>
-                            <span>2.00</span>
+                            <p className='text-center'>{item.airport_arrive_country_code}</p>
+                            <small className='fs-6'>{`(${item.airport_depature_name})`}</small>
+                            <br />
+                            {/* <span>{item.arrive}</span> */}
                         </div>
                         </div>
 
-                        <div className={styles.duration}>
-                        <p>3 hours 11 minutes</p>
-                        <span>direct</span>
+                        <div className={`${styles.duration} text-center`}>
+                        <p>{item.status}</p>
+                        <span>{item.status_transit}</span>
                         </div>
 
                         <div className={styles.facilities}>
                           <div>
+                            { item.lungage === 'true'? (
                               <FontAwesomeIcon icon={koper} />
+                            ): ""
+
+                            }
                           </div>
                           <div>
-                              <FontAwesomeIcon icon={burger}/>
+                            {
+                              item.meal === 'true' ? (
+                                <FontAwesomeIcon icon={burger}/>
+                              ) : ''
+                            }
+                              
                           </div>
                           <div>
-                              <FontAwesomeIcon icon={wifi} />
+                            {
+                              item.wifi === 'true' ? (
+                                <FontAwesomeIcon icon={wifi} />
+                              ): ''
+                            }
+                              
                           </div>
                         </div>
 
@@ -357,9 +485,12 @@ function Search() {
                         <p>{`Rp 2.000.000`}</p>
                         <span>/pax</span>
                         </div>
-                        <button className={styles.select}>
-                            Select
-                        </button>
+                        <Link href={`detailFlight/${item.id}`}>
+                          <button className={styles.select}>
+                              Select
+                          </button>
+                        
+                        </Link>
                     </div>
                 </div>
 

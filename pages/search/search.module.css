@@ -20,7 +20,7 @@
 }
 
 .detail{
-    width: 375px;
+    width: 540px;
     margin-left: 20px;
 }
 
@@ -55,11 +55,15 @@
 .origin:focus,
 .dest,
 .dest:focus{
-    width: 100px;
+    width: 300px;
     background-color: transparent;
     color: #FFFFFF;
     border: none;
     outline: none;
+}
+.origin::placeholder{
+    color: white;
+    font-size: 14px;
 }
 
 .dest{
@@ -235,6 +239,7 @@
 .schedule{
     display: flex;
     align-items: center;
+    width: 300px;
 }
 
 .schedule p{
@@ -282,6 +287,7 @@
 }
 
 .duration span{
+    width: 100px;
     color: #6B6B6B;
     font-size: 12px;
     font-weight: 400;
@@ -303,8 +309,11 @@
 
 .pricetag p{
     color: #2395FF;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
+    margin-left: 10px;
+    width: 120px;
+    text-align: end;
 }
 
 .pricetag span{
@@ -320,6 +329,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: 45px;
     background-color: #2395FF;
     color: #FFFFFF;
     border: none;
