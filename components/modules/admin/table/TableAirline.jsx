@@ -31,7 +31,7 @@ export default function Table() {
     }).then(async (result) => {
       if (result.isConfirmed) {
         await axios
-          .delete(`https://uticket-v2-be.vercel.app/api/v1/airlines/${id}`)
+          .delete(`https://uticket-v2-be.vercel.app/api/v1/airlines/`)
           .then(() => {
             fetch();
             // dispatch(deleteProduct(res));

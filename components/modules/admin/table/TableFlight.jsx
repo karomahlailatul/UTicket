@@ -82,6 +82,7 @@ export default function TableBooking() {
                   >
                     <thead>
                       <tr>
+                        <th>No</th>
                         <th>Airline Name</th>
                         <th>Depature City</th>
                         <th>Depature Country</th>
@@ -93,6 +94,7 @@ export default function TableBooking() {
                     <tbody>
                       {users.map((user, index) => (
                         <tr key={user.id}>
+                          <td>{index + 1}</td>
                           <td>{user.airlines_name}</td>
                           <td>{user.airport_depature_city}</td>
                           <td>{user.airport_depature_country}</td>

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ModalEditBooking from "../modal/ModalEditBooking";
 import ModalCreateBooking from "../modal/CreateModalBooking";
+import Swal from "sweetalert2";
+import Cookies from "js-cookie";
 
 export default function TableAirport() {
   const [users, setUser] = useState([]);
@@ -18,7 +20,7 @@ export default function TableAirport() {
   };
   const deleteProduct = async (id) => {
     const ID = users[id].id;
-
+    const token = Cookies.get("token");
     Swal.fire({
       title: "Sure to Delete This Product?",
       text: "You won't be able to revert this!",
@@ -84,7 +86,7 @@ export default function TableAirport() {
                       </tr>
                     </thead>
                     <tbody>
-                      {users.map((user) => (
+                      {users.map((user, index) => (
                         <tr key={user.id}>
                           <td>{user.city}</td>
                           <td>{user.country}</td>

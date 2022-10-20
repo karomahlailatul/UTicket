@@ -33,10 +33,10 @@ function ModalEditBooking({
   };
   console.log(users);
 
-  const getID = (id) => {
-    const ID = users[id].id;
-    console.log(ID);
-  };
+  // const getID = (id) => {
+  //   const ID = users[id].id;
+  //   console.log(ID);
+  // };
 
   const [data, setData] = useState({
     airlines_name,
