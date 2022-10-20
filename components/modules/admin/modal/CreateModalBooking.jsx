@@ -5,7 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import Swal from "sweetalert2";
 import Cookies from "js-cookie";
 
-function ModalCreate() {
+function ModalCreateBooking() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -33,7 +33,7 @@ function ModalCreate() {
     formData.append("support", data.support);
     const token = Cookies.get("token");
     axios
-      .post("https://uticket-v2-be.vercel.app/api/v1/airlines", formData, {
+      .post("https://uticket-v2-be.vercel.app/api/v1/booking", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
@@ -101,4 +101,4 @@ function ModalCreate() {
   );
 }
 
-export default ModalCreate;
+export default ModalCreateBooking;

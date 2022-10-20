@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import Link from "next/link";
-import ModalCreate from "./CreateModal";
-import ModalUpdate from "./UpdateModal";
+import ModalCreate from "../modal/CreateModalBooking";
+import ModalUpdate from "../modal/ModalEditBooking";
 import Swal from "sweetalert2";
-// import { useSelector } from "react-redux";
 
 export default function Table() {
   const [users, setUser] = useState([]);
@@ -33,7 +31,7 @@ export default function Table() {
     }).then(async (result) => {
       if (result.isConfirmed) {
         await axios
-          .delete(`https://uticket-v2-be.vercel.app/api/v1/airlines/$`)
+          .delete(`https://uticket-v2-be.vercel.app/api/v1/airlines/`)
           .then(() => {
             fetch();
             // dispatch(deleteProduct(res));
@@ -58,14 +56,6 @@ export default function Table() {
           <div className="row mb-2">
             <div className="col-sm-6">
               <h1>Airline List</h1>
-            </div>
-            <div className="col-sm-6">
-              <ol className="breadcrumb float-sm-right">
-                <li className="breadcrumb-item">
-                  <a href="#">Home</a>
-                </li>
-                <li className="breadcrumb-item active">DataTables</li>
-              </ol>
             </div>
           </div>
         </div>

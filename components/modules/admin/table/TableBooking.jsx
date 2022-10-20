@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import Link from "next/link";
-import ModalCreate from "./CreateModalFlight";
-import ModalUpdate from "./UpdateModalFlight";
-import Swal from "sweetalert2";
 import Cookies from "js-cookie";
+import ModalEditBooking from "../modal/ModalEditBooking";
+import Swal from "sweetalert2";
+import CreateModalBooking from "../modal/CreateModalBooking";
 
 export default function TableBooking() {
   const [users, setUser] = useState([]);
@@ -14,12 +13,19 @@ export default function TableBooking() {
   }, []);
   const token = Cookies.get("token");
   console.log(token);
+
   const getUsers = async () => {
     const response = await axios.get(
-      "https://uticket-v2-be.vercel.app/api/v1/flight"
+      "https://uticket-v2-be.vercel.app/api/v1/booking",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
     setUser(response.data.data);
   };
+  console.log(users);
 
   const deleteProduct = async (id) => {
     const ID = users[id].id;
@@ -35,7 +41,7 @@ export default function TableBooking() {
     }).then(async (result) => {
       if (result.isConfirmed) {
         await axios
-          .delete(`https://uticket-v2-be.vercel.app/api/v1/flight/${ID}`, {
+          .delete(`https://uticket-v2-be.vercel.app/api/v1/booking/${ID}`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -52,38 +58,27 @@ export default function TableBooking() {
       }
     });
   };
-  console.log(users);
   return (
     <div className="content-wrapper">
-      {/* Content Header (Page header) */}
       <section className="content-header">
         <div className="container-fluid">
           <div className="row mb-2">
             <div className="col-sm-6">
-              <h1>Flight List</h1>
-            </div>
-            <div className="col-sm-6">
-              <ol className="breadcrumb float-sm-right">
-                <li className="breadcrumb-item">
-                  <a href="#">Home</a>
-                </li>
-                <li className="breadcrumb-item active">DataTables</li>
-              </ol>
+              <h1>Booking List</h1>
             </div>
           </div>
         </div>
-        {/* /.container-fluid */}
       </section>
-      {/* Main content */}
+
       <section className="content">
         <div className="container-fluid">
           <div className="row">
             <div className="col-12">
               <div className="card">
                 <div className="card-header d-flex justify-content-end">
-                  <ModalCreate />
+                  <CreateModalBooking />
                 </div>
-                {/* /.card-header */}
+
                 <div className="card-body">
                   <table
                     id="example2"
@@ -92,24 +87,22 @@ export default function TableBooking() {
                     <thead>
                       <tr>
                         <th>Airline Name</th>
-                        <th>Depature City</th>
-                        <th>Depature Country</th>
-                        <th>Arrive City</th>
-                        <th>Arive Country</th>
-                        <th>Action</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Country</th>
                       </tr>
                     </thead>
                     <tbody>
                       {users.map((user, index) => (
                         <tr key={user.id}>
-                          <td>{index + 1}</td>
                           <td>{user.airlines_name}</td>
-                          <td>{user.airport_depature_city}</td>
-                          <td>{user.airport_depature_country}</td>
-                          <td>{user.airport_arrive_city}</td>
-                          <td>{user.airport_arrive_country}</td>
+                          <td>{user.booking_fullname}</td>
+                          <td>{user.booking_email}</td>
+                          <td>{user.booking_phone}</td>
+                          <td>{user.users_country}</td>
                           <td>
-                            <ModalUpdate />
+                            <ModalEditBooking />
                             <button
                               className="btn btn-danger"
                               onClick={() => deleteProduct(index)}

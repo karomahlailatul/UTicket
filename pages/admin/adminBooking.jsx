@@ -1,5 +1,5 @@
 import Sidebar from "../../components/modules/admin/sidebar/Sidebar";
-import TableAirline from "../../components/modules/admin/table/TableAirline";
+import TableBooking from "../../components/modules/admin/table/TableBooking";
 
 export default function adminPanel() {
   return (
@@ -9,10 +9,11 @@ export default function adminPanel() {
           <Sidebar />
 
           <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <TableAirline />
+            <TableBooking />
           </main>
         </div>
       </div>
+      {/* <Footer /> */}
     </>
   );
 }

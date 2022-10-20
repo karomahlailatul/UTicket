@@ -4,8 +4,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "../node_modules/@fortawesome/fontawesome-svg-core/styles.css";
 
-import Footer from "../components/modules/footer/Footer"
-import Navbar from "../components/navbarProfile"
+import Footer from "../components/modules/footer/Footer";
+import Navbar from "../components/navbarProfile";
 
 import { useEffect, Fragment } from "react";
 import { ToastContainer } from "react-toastify";
@@ -24,7 +24,7 @@ library.add(fas, fab, far);
 import { useRouter } from "next/router";
 
 const MyApp = ({ Component, pageProps }) => {
-  const router = useRouter()
+  const router = useRouter();
   useEffect(() => {
     require("bootstrap/dist/js/bootstrap.bundle.min.js");
     document.title = "uTicket | Fly Everywhere";
@@ -32,68 +32,25 @@ const MyApp = ({ Component, pageProps }) => {
 
   return (
     <Fragment>
-
-    
-
-    {router.pathname != "/auth" && router.pathname != "/auth/signup" && router.pathname != "/auth/login" ? <Navbar /> : null }
+      {router.pathname != "/auth" &&
+      router.pathname !== "/404" &&
+      router.pathname != "/auth/signup" &&
+      router.pathname != "/auth/login" ? (
+        <Navbar />
+      ) : null}
 
       <Fragment>
         <Provider store={store}>
           <Component {...pageProps} />
         </Provider>
-        <div>
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
-          />
-
-          <link
-            rel="stylesheet"
-            href="plugins/fontawesome-free/css/all.min.css"
-          />
-
-          <link
-            rel="stylesheet"
-            href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
-          />
-
-          <link
-            rel="stylesheet"
-            href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css"
-          />
-
-          <link
-            rel="stylesheet"
-            href="plugins/icheck-bootstrap/icheck-bootstrap.min.css"
-          />
-
-          <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css" />
-
-          <link rel="stylesheet" href="dist/css/adminlte.min.css" />
-
-          <link
-            rel="stylesheet"
-            href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css"
-          />
-
-          <link
-            rel="stylesheet"
-            href="plugins/daterangepicker/daterangepicker.css"
-          />
-
-          <link
-            rel="stylesheet"
-            href="plugins/summernote/summernote-bs4.min.css"
-          />
-        </div>
       </Fragment>
 
-
-
-
-      {router.pathname != "/auth" && router.pathname != "/auth/signup" && router.pathname != "/auth/login" ? <Footer /> : null }
-
-
+      {router.pathname != "/auth" &&
+      router.pathname !== "/404" &&
+      router.pathname != "/auth/signup" &&
+      router.pathname != "/auth/login" ? (
+        <Footer />
+      ) : null}
 
       <ToastContainer
         position="top-right"
