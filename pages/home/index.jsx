@@ -1,4 +1,4 @@
-// import React, { useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import styles from "./home.module.css";
 import home1 from "../../assets/img/home/home1.svg";
 import home2 from "../../assets/img/home/home2.svg";
@@ -12,11 +12,8 @@ import NavbarProfile from "../../components/navbarProfile";
 
 
 const Home = () => {
-  
-  
   return (
-    <div>
-      <NavbarProfile />
+    <Fragment>
       <div className={styles.header}>
         <div className={styles["header-left"]}>
           <div className={styles.catchphrase}>
@@ -25,28 +22,30 @@ const Home = () => {
             </p>
             <p>and explore the world with us</p>
           </div>
-          <div style={{ width: "830px" }}>
+          <div className={`${styles.img}`}>
             <Image src={home2} alt="" />
           </div>
         </div>
 
-        <div className={styles["header-right"]}>
-          <div style={{ width: "400px" }}>
+        <div className={`${styles["header-right"]}`}>
+          <div >
             <Image src={home1} alt="" />
           </div>
-
-          <div style={{ width: "160px", margin: "80px 0 0 70px" }}>
+          <div >
             <Image src={home3} alt="" />
           </div>
         </div>
       </div>
+      {/* <SearchPopUp /> */}
       <Trending />
       <TopTen 
         src={paris}
         title="paris"
       />
-      <SearchPopUp />
-    </div>
+      {/* <div className={styles.content} style={{ width: "1348px" }}>
+
+      </div> */}
+    </Fragment>
   );
 };
 

@@ -9,7 +9,7 @@ const right_to_bracket = findIconDefinition({prefix: 'fas', iconName: 'right-to-
 
 function searchPopUp() {
   return (
-    <div className={`${styles.container} container`}>
+    <div className={`${styles.container}`}>
           <div className={`px-5 py-4`}>
             <div className={`d-flex row `}>
               <p><b>Hey,</b></p>
