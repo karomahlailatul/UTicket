@@ -81,11 +81,15 @@ function ModalCreateBooking({ getUsers, flightID }) {
         Swal.fire("Created!", "Edit Flight Success!", "success");
         setShow(false);
         getUsers();
+        setData([]);
+        setFlightDetailID([]);
       })
       .catch((err) => {
         console.log(err);
         Swal.fire("Failed!", "Edit Flight Failed!", "error");
         setShow(false);
+        setData([]);
+        setFlightDetailID([]);
       });
   };
 
