@@ -7,7 +7,11 @@ import Cookies from "js-cookie";
 
 function ModalCreateBooking({ getUsers, flightID }) {
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setData([]);
+    setFlightDetailID([]);
+  };
   const handleShow = () => setShow(true);
   const [flightDetailID, setFlightDetailID] = useState([]);
 
