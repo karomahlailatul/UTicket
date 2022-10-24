@@ -3,7 +3,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import ModalEditBooking from "../modal/ModalEditBooking";
 import Swal from "sweetalert2";
-import CreateModalBooking from "../modal/CreateModalBooking";
+// import CreateModalBooking from "../modal/CreateModalBooking";
 
 export default function TableBooking() {
   const [users, setUser] = useState([]);
@@ -75,9 +75,7 @@ export default function TableBooking() {
           <div className="row">
             <div className="col-12">
               <div className="card">
-                <div className="card-header d-flex justify-content-end">
-                  <CreateModalBooking />
-                </div>
+                <div className="card-header d-flex justify-content-end"></div>
 
                 <div className="card-body">
                   <table
@@ -91,6 +89,7 @@ export default function TableBooking() {
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Country</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -103,12 +102,6 @@ export default function TableBooking() {
                           <td>{user.users_country}</td>
                           <td>
                             <ModalEditBooking />
-                            <button
-                              className="btn btn-danger"
-                              onClick={() => deleteProduct(index)}
-                            >
-                              Delete
-                            </button>
                           </td>
                         </tr>
                       ))}
