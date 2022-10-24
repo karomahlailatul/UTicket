@@ -35,6 +35,7 @@ function DetailFlight() {
     const result = await axios.get(`${process.env.API_BACKEND}users/profile`, {
       headers: {
         Authorization: `Bearer ${token}`,
+        "Access-Control-Allow-Origin": "*",
       },
     });
     setDataProfile(result.data.data);
