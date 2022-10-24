@@ -27,37 +27,6 @@ export default function TableBooking() {
   };
   console.log(users);
 
-  const deleteProduct = async (id) => {
-    const ID = users[id].id;
-
-    Swal.fire({
-      title: "Sure to Delete This Product?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes",
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        await axios
-          .delete(`https://uticket-v2-be.vercel.app/api/v1/booking/${ID}`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          })
-          .then((res) => {
-            fetch();
-            Swal.fire("Deleted!", "Product Delete Success!", "success");
-            console.log(res);
-          })
-          .catch((err) => {
-            Swal.fire("Failed!", "Product Delete Failed!", "error");
-            console.log(err);
-          });
-      }
-    });
-  };
   return (
     <div className="content-wrapper">
       <section className="content-header">
@@ -93,7 +62,7 @@ export default function TableBooking() {
                       </tr>
                     </thead>
                     <tbody>
-                      {users.map((user, index) => (
+                      {users.map((user) => (
                         <tr key={user.id}>
                           <td>{user.airlines_name}</td>
                           <td>{user.booking_fullname}</td>
