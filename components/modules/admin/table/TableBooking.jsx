@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import ModalEditBooking from "../modal/ModalEditBooking";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 // import CreateModalBooking from "../modal/CreateModalBooking";
 
 export default function TableBooking() {
