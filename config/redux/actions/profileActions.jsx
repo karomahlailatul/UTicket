@@ -69,7 +69,7 @@ export const updateProfileImage = (data, token) => async (dispatch) => {
         form.append("address", dataProfile.address)
         form.append("postal_code", dataProfile.postal_code)
         form.append("picture", data)
-        const result = await axios.put(process.env.API_BACKEND + "/users/profile?update", form, {
+        const result = await axios.put(process.env.API_BACKEND + "users/profile?update", form, {
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 Authorization: `Bearer ${token}`
