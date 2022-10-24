@@ -15,7 +15,8 @@ export const register = (data, router, setLoading) => async (dispatch) => {
         router.push("/auth/login");
         setLoading(false);
     } catch (error) {
-        toast.warning(error.response.data.message, { toastId: "errorSignUp" });
+        console.log('error: ', error);
+        toast.warning(error.response?.data?.message, { toastId: "errorSignUp" });
         setLoading(false);
     }
 };
@@ -33,7 +34,8 @@ export const login = (data, router, setLoading) => async (dispatch) => {
         router.push("/home");
         setLoading(false);
     } catch (error) {
-        toast.warning(error.response.data.message, { toastId: "errorSignIn" });
+        console.log('error: ', error);
+        toast.warning(error.response?.data?.message, { toastId: "errorSignIn" });
         setLoading(false);
     }
 };

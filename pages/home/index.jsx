@@ -8,7 +8,7 @@ import Image from "next/image";
 import Trending from "../../components/Trending";
 import TopTen from "../../components/TOP10";
 import SearchPopUp from "../../components/searchPopUp/searchPopUp";
-// import NavbarProfile from "../../components/navbarProfile/index";
+import NavbarProfile from "../../components/navbarProfile";
 
 
 const Home = () => {
@@ -16,7 +16,7 @@ const Home = () => {
   
   return (
     <div>
-      {/* <NavbarProfile find/> */}
+      <NavbarProfile />
       <div className={styles.header}>
         <div className={styles["header-left"]}>
           <div className={styles.catchphrase}>

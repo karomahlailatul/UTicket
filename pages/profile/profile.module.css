@@ -10,10 +10,9 @@
     padding: 50px 70px 50px 70px;
     justify-content: space-between;
 }
-.sect1{
-    padding:10px;
-    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
-    background: #FFFFFF;
-    width: 28%;
-}
+
+@media only screen and (max-width: 800px) {
+    /* .wrapper{
+        flex-direction: column;
+    } */
+} 

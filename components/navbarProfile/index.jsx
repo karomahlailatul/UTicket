@@ -15,8 +15,8 @@ const envelope = findIconDefinition({ prefix: 'far', iconName: 'envelope' })
 const bell = findIconDefinition({ prefix: 'far', iconName: 'bell' })
 const alignRight = findIconDefinition({ prefix: 'fas', iconName: 'align-right' })
 
-const NavbarProfile = ({ setFocus }) => {
-  console.log("setFocus: ", setFocus);
+const NavbarProfile = () => {
+  
   const [token, setToken] = useState(null)
 
   useEffect(() => {
@@ -46,7 +46,6 @@ const NavbarProfile = ({ setFocus }) => {
                 <button  
                   type="button"
                   className={styles["menu-btn"]}
-                  onClick={() => setFocus("find-ticket")}
                 >
                   Find Ticket
                 </button>
@@ -54,7 +53,6 @@ const NavbarProfile = ({ setFocus }) => {
                 <button
                   type="button"
                   className={styles["menu-btn"]}
-                  onClick={() => setFocus("my-booking")}
                 >
                   My Booking
                 </button>

@@ -8,6 +8,8 @@ const initialState = {
         ...state,
         creditCard: action.payload,
       };
+    } else if (action.type === "CREATE_CREDIT_CARD") {
+      return state;
     } else {
       return state;
     }

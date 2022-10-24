@@ -32,11 +32,8 @@ const TabMyBooking = () => {
                     <div className={styles.row1}>
                         <div className={styles["row-status"]}>
                             <p className={styles["status-title"]}>Status</p>
-                            <div className={styles["waiting-status"]}>Waiting for payment</div>
+                            <div className={styles["pending-status"]}>Pending</div>
                         </div>
-                        <Link href="#">
-                            <a className={styles["view-details"]}>View Details</a>
-                        </Link>
                     </div>
                 </div>
             </div>
@@ -55,11 +52,9 @@ const TabMyBooking = () => {
                     <div className={styles.row1}>
                         <div className={styles["row-status"]}>
                             <p className={styles["status-title"]}>Status</p>
-                            <div className={styles["issue-status"]}>Payment Complete</div>
+                            <div className={styles["complete-status"]}>Payment Complete</div>
                         </div>
-                        <Link href="#">
                             <a className={styles["view-details"]}>View Details</a>
-                        </Link>
                     </div>
                 </div>
             </div>

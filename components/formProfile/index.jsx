@@ -1,22 +1,31 @@
 // import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import styles from './formProfile.module.css'
+import Cookies from "js-cookie";
+// import { toast } from "react-toastify";
+import { useDispatch } from 'react-redux';
+import { updateUserProfile } from '../../config/redux/actions/profileActions';
 
-const FormProfile = ({ email, username, country, city, phone, address, postal_code }) => {
-    const [form, setForm] = useState({})
+const FormProfile = ({ name, 
+        email, username, country, city, phone, address, postal_code 
+    }) => {
+
+    const dispatch = useDispatch()
+    const [token, setToken] = useState(null)
+    const [form, setForm] = useState({
+        email,
+        username,
+        country,
+        city,
+        phone,
+        address,
+        postal_code,
+    })
 
     useEffect(() => {
-        setForm({
-            ...form,
-            email,
-            username,
-            country,
-            city,
-            phone,
-            address,
-            postal_code
-        })
-    }, [])
+        const tokenCookies = Cookies.get("token")
+        setToken(tokenCookies)
+    }, [token])
 
     const [active, setActive] = useState(false)
     const [disabled, setDisabled] = useState(true)
@@ -32,16 +41,6 @@ const FormProfile = ({ email, username, country, city, phone, address, postal_co
     }
 
     const handleCancel = () => {
-        setForm({
-            ...form,
-            email,
-            username,
-            country,
-            city,
-            phone,
-            address,
-            postal_code
-        })
         setActive(false)
         setDisabled(true)
     }
@@ -53,22 +52,18 @@ const FormProfile = ({ email, username, country, city, phone, address, postal_co
         })
     }
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     const form = new FormData();
-        
-    //     form.append("username", username)
-    //     form.append("username", country)
-    //     form.append("username", city)
-    //     form.append("username", phone)
-    //     form.append("username", address)
-    //     form.append("username", postal_code)
-
-    //     axios.put(process.env.API_BACKEND + "")
-    // }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(updateUserProfile(name, form, token))
+        setActive(false)
+        setDisabled(true)
+    }
     console.log('form: ', form);
     return (
-        <form className={styles.sect2}>
+        <form
+            onSubmit={handleSubmit}
+            className={styles.sect2}
+        >
             <p className={styles.text}>PROFILE</p>
             <p className={styles.text2}>Profile</p>
             <div className={styles.formSheet}>
@@ -81,7 +76,7 @@ const FormProfile = ({ email, username, country, city, phone, address, postal_co
                         type="email"
                         name="email"
                         id="email"
-                        value={form.email !== null ? form.email : ""}
+                        defaultValue={email || ""}
                         className={styles["input-disabled"]}
                         placeholder="Input your email"
                         disabled
@@ -94,7 +89,7 @@ const FormProfile = ({ email, username, country, city, phone, address, postal_co
                         type="text"
                         name="country"
                         id="country"
-                        value={form.country !== null ? form.country : ""}
+                        defaultValue={country || ""}
                         className={disabled ? styles["input-disabled"] : styles.input}
                         placeholder="Input your country"
                         disabled={disabled}
@@ -105,7 +100,7 @@ const FormProfile = ({ email, username, country, city, phone, address, postal_co
                     </label>
                     <input
                         id={styles["phone-number"]}
-                        value={form.phone !== null ? form.phone : ""}
+                        defaultValue={phone ||  ""}
                         type="number"
                         name="phone"
                         className={disabled ? styles["input-disabled"] : styles.input}
@@ -123,7 +118,7 @@ const FormProfile = ({ email, username, country, city, phone, address, postal_co
                         type="text"
                         name="username"
                         id="username"
-                        value={form.username !== null ? form.username : ""}
+                        defaultValue={username || ""}
                         className={disabled ? styles["input-disabled"] : styles.input}
                         disabled={disabled}
                         placeholder="Input your name"
@@ -136,7 +131,7 @@ const FormProfile = ({ email, username, country, city, phone, address, postal_co
                         type="text"
                         name="city"
                         id="city"
-                        value={form.city !== null ? form.city : ""}
+                        defaultValue={city || ""}
                         className={disabled ? styles["input-disabled"] : styles.input}
                         disabled={disabled}
                         placeholder="Input your city"
@@ -148,6 +143,8 @@ const FormProfile = ({ email, username, country, city, phone, address, postal_co
                     <input
                         type="text"
                         id="address"
+                        name="address"
+                        defaultValue={address || ""}
                         className={disabled ? styles["input-disabled"] : styles.input}
                         disabled={disabled}
                         placeholder="Input your address"
@@ -159,7 +156,7 @@ const FormProfile = ({ email, username, country, city, phone, address, postal_co
                     <input
                         type="number"
                         id="postcode"
-                        value={form.postal_code !== null ? form.postal_code : ""}
+                        defaultValue={postal_code || ""}
                         className={disabled ? styles["input-disabled"] : styles.input}
                         disabled={disabled}
                         name="postal_code"

@@ -32,7 +32,7 @@ const Login = () => {
         dispatch(login(form, router, setLoading))
     }
     return (
-        <div style={{ height: "100vh", display: "flex" }}>
+        <div className={styles.container}>
             <div className={styles.divider}>
                 <BannerAuth />
             </div>
