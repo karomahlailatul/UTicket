@@ -3,7 +3,7 @@ const initialState = {
 }
 
 export const AirlinesReducer = (state = initialState, {type, payload}) =>{
-    console.log(payload)
+    // console.log(payload)
     switch(type){
         case "GET_AIRLINES":
             return {...state, data: payload.data}

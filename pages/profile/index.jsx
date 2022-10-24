@@ -35,7 +35,7 @@ const Profile = ({token, user_id}) => {
 
   return (
     <div className={styles.container}>
-      <NavbarProfile/>
+  
       <div>
         <div className={styles.wrapper}>
             <ProfileCard

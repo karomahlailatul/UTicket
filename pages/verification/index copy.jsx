@@ -11,11 +11,11 @@ import nookies from "nookies";
 
 // import { wrapper } from "../../app/redux/store";
 
-export const getServerSideProps = async (ctx) => {
-  const { token, 
-    // refreshToken
-   } = nookies.get(ctx);
-  console.log("token: ", token);
+export const getServerSideProps = async () => {
+  // const { token, 
+  //   // refreshToken
+  //  } = nookies.get(ctx);
+  // console.log("token: ", token);
   // console.log(ctx.cookies.get("token"));
   // const verifyType = ctx?.query?.type || null;
   // const usersId = ctx?.query?.id || null;

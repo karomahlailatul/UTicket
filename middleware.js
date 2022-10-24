@@ -18,9 +18,9 @@ export default function middleware(request = NextRequest) {
     && cookiesId 
     // && cookiesLockCredential
     ) {
-    console.log("valid");
+    // console.log("valid");
   } else {
-    if (url.includes("/profile") || url.includes("/admin")) {
+    if (url.includes("/profile") || url.includes("/admin") || url.includes("/detailsFlight")) {
       urlRedirect.pathname = "/auth/login";
       return NextResponse.redirect(urlRedirect);
     }

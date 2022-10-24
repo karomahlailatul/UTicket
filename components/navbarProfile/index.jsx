@@ -21,7 +21,7 @@ const NavbarProfile = () => {
 
   useEffect(() => {
     const tokenCookies = Cookies.get("token")
-    console.log("token: ", tokenCookies);
+    // console.log("token: ", tokenCookies);
     if (token !== undefined) {
       setToken(tokenCookies)
     }

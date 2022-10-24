@@ -58,7 +58,7 @@ const FormProfile = ({ name,
         setActive(false)
         setDisabled(true)
     }
-    console.log('form: ', form);
+    // console.log('form: ', form);
     return (
         <form
             onSubmit={handleSubmit}

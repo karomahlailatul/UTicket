@@ -23,7 +23,7 @@ const ProfileCard = ({ picture, name, country, city, token, user_id }) => {
   const dispatch = useDispatch();
   const [active, setActive] = useState(false)
   const { creditCard } = useSelector((state) => state.cc)
-  console.log('cc: ', creditCard);
+  // console.log('cc: ', creditCard);
   // const [token, setToken] = useState(null)
   // const [form, setForm] = useState([
   //   {
@@ -47,7 +47,7 @@ const ProfileCard = ({ picture, name, country, city, token, user_id }) => {
     const file = e.target.files[0];
     setImage(file)
     setPreviewImage(URL.createObjectURL(e.target.files[0]));
-    console.log('file: ', file)
+    // console.log('file: ', file)
   };
 
   const handleCancel = () => {

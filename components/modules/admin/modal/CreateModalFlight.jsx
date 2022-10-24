@@ -45,7 +45,7 @@ function ModalCreateBooking({ getUsers }) {
       [e.target.name]: e.target.value,
     });
   };
-  console.log(data);
+  // console.log(data);
 
   const handleCreate = async (e) => {
     await e.preventDefault();
@@ -89,14 +89,14 @@ function ModalCreateBooking({ getUsers }) {
           },
         }
       )
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        // console.log(res);
         Swal.fire("Created!", "Product Created Success!", "success");
         setShow(false);
         getUsers();
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
+        // console.log(err);
         Swal.fire("Failed!", "Product Create Failed!", "error");
         setShow(false);
       });

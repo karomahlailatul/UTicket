@@ -12,7 +12,7 @@ export default function TableBooking() {
     getUsers();
   }, []);
   const token = Cookies.get("token");
-  console.log(token);
+  // console.log(token);
 
   const getUsers = async () => {
     const response = await axios.get(
@@ -25,7 +25,7 @@ export default function TableBooking() {
     );
     setUser(response.data.data);
   };
-  console.log(users);
+  // console.log(users);
 
   return (
     <div className="content-wrapper">

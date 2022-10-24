@@ -10,10 +10,10 @@ export const getUserProfile = (token) => async (dispatch) => {
             },
         });
         const user = result.data.data;
-        console.log('user: ', user);
+        // console.log('user: ', user);
         dispatch({ type: "GET_USER_PROFILE", payload: user });
     } catch (error) {
-        console.log(error.response.data.message);
+        // console.log(error.response.data.message);
     }
 };
 
@@ -43,11 +43,11 @@ export const updateUserProfile = (name, data, token) => async (dispatch) => {
                 Authorization: `Bearer ${token}`
             },
         });
-        console.log('result: ', result);
+        // console.log('result: ', result);
         toast.success(result.data.message, { toastId: "successEditProfile" });
         dispatch({ type: "UPDATE_USER_PROFILE", payload: result.data })
     } catch (error) {
-        console.log(error);
+        // console.log(error);
     }
 }
 
@@ -78,7 +78,7 @@ export const updateProfileImage = (data, token) => async (dispatch) => {
         toast.success(result.data.message, { toastId: "successEditImage" });
         dispatch({ type: "UPDATE_USER_IMAGE", payload: result.data })
     } catch (error) {
-        console.log(error);
+        // console.log(error);
     }
 }
 

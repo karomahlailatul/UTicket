@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 
 
 export const register = (data, router, setLoading) => async (dispatch) => {
-    console.log('data: ', data);
+    // console.log('data: ', data);
     try {
         const result = await axios.post(process.env.API_BACKEND + "users/register", data, {
             headers: {
@@ -13,20 +13,20 @@ export const register = (data, router, setLoading) => async (dispatch) => {
             }
         });
         const user = result.data;
-        console.log('user: ', user);
+        // console.log('user: ', user);
         toast.success(user.message, { toastId: "successSignUp" });
         dispatch({ type: "USER_REGISTER_SUCCESS", payload: user });
         router.push("/auth/login");
         setLoading(false);
     } catch (error) {
-        console.log('error: ', error);
+        // console.log('error: ', error);
         toast.warning(error.response?.data?.message, { toastId: "errorSignUp" });
         setLoading(false);
     }
 };
 
 export const login = (data, router, setLoading) => async (dispatch) => {
-    console.log('data: ', data)
+    // console.log('data: ', data)
     try {
         const result = await axios.post(process.env.API_BACKEND + "users/login", data, {
             headers: {
@@ -34,7 +34,7 @@ export const login = (data, router, setLoading) => async (dispatch) => {
             }
         });
         const user = result.data.data;
-        console.log('user: ', user);
+        // console.log('user: ', user);
         toast.success("Sign In Success. Welcome " + user.name, { toastId: "successSignIn" });
         Cookies.set("token", user.token);
         Cookies.set("user_id", user.id);
@@ -42,7 +42,7 @@ export const login = (data, router, setLoading) => async (dispatch) => {
         router.push("/home");
         setLoading(false);
     } catch (error) {
-        console.log('error: ', error);
+        // console.log('error: ', error);
         toast.warning(error.response?.data?.message, { toastId: "errorSignIn" });
         setLoading(false);
     }

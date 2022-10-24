@@ -29,7 +29,7 @@ const ModalAdd = ({ children, token, user_id }) => {
             [e.target.name]: e.target.value
         })
     }
-    console.log('cc-form: ', form);
+    // console.log('cc-form: ', form);
     return (
         <Fragment>
             <button

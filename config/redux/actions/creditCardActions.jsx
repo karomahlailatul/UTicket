@@ -11,15 +11,15 @@ export const getCreditCard = (token, user_id) => async (dispatch) => {
             },
         });
         const cc = result.data.data;
-        console.log('cc: ', cc);
+        // console.log('cc: ', cc);
         dispatch({ type: "GET_CREDIT_CARD", payload: cc });
     } catch (error) {
-        console.log(error.response.data.message);
+        // console.log(error.response.data.message);
     }
 };
 
 export const createCreditCard = (token, data, user_id) => async (dispatch) => {
-    console.log('data: ', data);
+    // console.log('data: ', data);
     try {
         const form = new FormData();
         form.append("cc_number", data.cc_number)
@@ -35,7 +35,7 @@ export const createCreditCard = (token, data, user_id) => async (dispatch) => {
         dispatch({ type: "CREATE_CREDIT_CARD", payload: result.data})
         toast.success(result.data.message, { toastId: "successCreateCard" });
     } catch (error) {
-        console.log(error);
+        // console.log(error);
     }
 }
 

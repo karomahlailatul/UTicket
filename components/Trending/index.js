@@ -31,7 +31,7 @@ function Trending() {
     const result = await axios.get(`${process.env.API_BACKEND}airport?limit=10`);
     setData(result.data.data);
   };
-  console.log(data);
+  // console.log(data);
   useEffect(() => {
     fetch();
     // dispatch(DestinationAction({limit: 10}))

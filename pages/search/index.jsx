@@ -39,7 +39,7 @@ function Search() {
   const [dataTiket, setDataTiket] = useState([]);
   const [idFrom, setIdFrom] = useState("");
   const [idTo, setIdTo] = useState("");
-  console.log(dataTiket);
+  // console.log(dataTiket);
   // console.log(idFrom)
   // console.log(idTo)
   // console.log(dataAirlines)
@@ -78,7 +78,7 @@ function Search() {
     );
     // console.log(url.data.data)
     const result = url.data.data;
-    console.log(result);
+    // console.log(result);
 
     setDataFrom(result);
     // setDataCity(result)
@@ -89,7 +89,7 @@ function Search() {
     );
     // console.log(url.data.data)
     const result = url.data.data;
-    console.log(result);
+    // console.log(result);
     setDataTo(result);
     // setDataCityTo(result)
   };

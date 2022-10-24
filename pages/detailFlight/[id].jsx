@@ -45,13 +45,13 @@ function DetailFlight() {
       // const id = router?.query?.id;
       const result = await axios.get(`${process.env.API_BACKEND}flight/${Id.toString()}`);
       setDataFlight(result.data.data[0]);
-      console.log(Id)
+      // console.log(Id)
     };
     // console.log(router.query.id);
     // setId(router.query.id)
     fetchProfile();
     fetch(router.query.id);
-    console.log(router.query.id)
+    // console.log(router.query.id)
 
   }, [router]);
 

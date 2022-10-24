@@ -12,7 +12,7 @@ export default function TableBooking() {
     getUsers();
   }, []);
   const token = Cookies.get("token");
-  console.log(token);
+  // console.log(token);
   const getUsers = async () => {
     const response = await axios.get(
       "https://uticket-v2-be.vercel.app/api/v1/flight"
@@ -37,19 +37,19 @@ export default function TableBooking() {
               Authorization: `Bearer ${token}`,
             },
           })
-          .then((res) => {
+          .then(() => {
             getUsers();
-            Swal.fire("Deleted!", "Product Delete Success!", "success");
-            console.log(res);
+            Swal.fire("Deleted!", "Flight Delete Success!", "success");
+            // console.log(res);
           })
-          .catch((err) => {
-            Swal.fire("Failed!", "Product Delete Failed!", "error");
-            console.log(err);
+          .catch(() => {
+            Swal.fire("Failed!", "Flight Delete Failed!", "error");
+            // console.log(err);
           });
       }
     });
   };
-  console.log(users);
+  // console.log(users);
   return (
     <div className="content-wrapper">
       {/* Content Header (Page header) */}
