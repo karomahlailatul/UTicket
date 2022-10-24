@@ -20,8 +20,9 @@ export const getUserProfile = (token) => async (dispatch) => {
 export const updateUserProfile = (name, data, token) => async (dispatch) => {
     try {
 
-        const resultProfile = await axios.get(process.env.API_BACKEND + "/users/profile/", {
+        const resultProfile = await axios.get(process.env.API_BACKEND + "users/profile/", {
             headers: {
+                "Access-Control-Allow-Origin": "*",
                 Authorization: `Bearer ${token}`,
             },
         });
