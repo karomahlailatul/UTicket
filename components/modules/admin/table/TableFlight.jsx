@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import ModalCreateBooking from "../modal/CreateModalBooking";
-import ModalEditBooking from "../modal/ModalEditBooking";
+import ModalCreateFlight from "../modal/CreateModalFlight";
+import ModalEditFlight from "../modal/ModalEditFlight";
 import Swal from "sweetalert2";
 import Cookies from "js-cookie";
 
@@ -21,8 +21,6 @@ export default function TableBooking() {
   };
 
   const deleteProduct = async (id) => {
-    const ID = users[id].id;
-
     Swal.fire({
       title: "Sure to Delete This Product?",
       text: "You won't be able to revert this!",
@@ -34,13 +32,13 @@ export default function TableBooking() {
     }).then(async (result) => {
       if (result.isConfirmed) {
         await axios
-          .delete(`https://uticket-v2-be.vercel.app/api/v1/flight/${ID}`, {
+          .delete(`https://uticket-v2-be.vercel.app/api/v1/flight/${id}`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           })
           .then((res) => {
-            fetch();
+            getUsers();
             Swal.fire("Deleted!", "Product Delete Success!", "success");
             console.log(res);
           })
@@ -72,7 +70,7 @@ export default function TableBooking() {
             <div className="col-12">
               <div className="card">
                 <div className="card-header d-flex justify-content-end">
-                  <ModalCreateBooking />
+                  <ModalCreateFlight getUsers={getUsers} />
                 </div>
                 {/* /.card-header */}
                 <div className="card-body">
@@ -101,10 +99,13 @@ export default function TableBooking() {
                           <td>{user.airport_arrive_city}</td>
                           <td>{user.airport_arrive_country}</td>
                           <td>
-                            <ModalEditBooking />
+                            <ModalEditFlight
+                              getUsers={getUsers}
+                              flightID={user.id}
+                            />
                             <button
-                              className="btn btn-danger"
-                              onClick={() => deleteProduct(index)}
+                              className="btn btn-danger ms-2"
+                              onClick={() => deleteProduct(user.id)}
                             >
                               Delete
                             </button>

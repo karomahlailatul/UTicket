@@ -5,49 +5,39 @@ import Modal from "react-bootstrap/Modal";
 import Swal from "sweetalert2";
 import Cookies from "js-cookie";
 
-function ModalCreateBooking({ getUsers, flightID }) {
+function ModalCreateBooking({ getUsers }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [flightDetailID, setFlightDetailID] = useState([]);
 
-  const getFlightDetailID = async () => {
-    const response = await axios.get(
-      `https://uticket-v2-be.vercel.app/api/v1/flight/${flightID?.toString()}`
-    );
-    setFlightDetailID(response.data.data[0]);
-    setData({
-      airlines_id: response.data.data[0].airlines_id,
-      airport_depature: response.data.data[0].airport_depature,
-      airport_arrive: response.data.data[0].airport_arrive,
-      depature: response.data.data[0].depature.split("T")[0],
-      arrive: response.data.data[0].arrive.split("T")[0],
-      lungage: response.data.data[0].lungage,
-      reschedule: response.data.data[0].reschedule,
-      refundable: response.data.data[0].refundable,
-      meal: response.data.data[0].meal,
-      wifi: response.data.data[0].wifi,
-      price: response.data.data[0].price,
-      type_class: response.data.data[0].type_class,
-      capacity: response.data.data[0].capacity,
-      status: response.data.data[0].status,
-      admin_id: response.data.data[0].admin_id,
-      status_transit: response.data.data[0].status_transit,
-      airport_transit_1: response.data.data[0].airport_transit_1,
-      time_transit_1: response.data.data[0].time_transit_1,
-      airport_transit_2: response.data.data[0].airport_transit_2,
-      time_transit_2: response.data.data[0].time_transit_2,
-      airport_transit_3: response.data.data[0].airport_transit_3,
-      time_transit_3: response.data.data[0].time_transit_3,
-      airport_transit_4: response.data.data[0].airport_transit_4,
-      time_transit_4: response.data.data[0].time_transit_4,
-      estimate: response.data.data[0].estimate,
-      terminal_verification: response.data.data[0].terminal_verification,
-    });
-  };
-  // console.log(flightDetailID);
-
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({
+    airlines_id: "",
+    airport_depature: "",
+    airport_arrive: "",
+    depature: "",
+    arrive: "",
+    lungage: "",
+    reschedule: "",
+    refundable: "",
+    meal: "",
+    wifi: "",
+    price: "",
+    type_class: "",
+    capacity: "",
+    status: "",
+    admin_id: "",
+    status_transit: "",
+    airport_transit_1: "",
+    time_transit_1: "",
+    airport_transit_2: "",
+    time_transit_2: "",
+    airport_transit_3: "",
+    time_transit_3: "",
+    airport_transit_4: "",
+    time_transit_4: "",
+    estimate: "",
+    terminal_verification: "",
+  });
 
   const handleChange = (e) => {
     setData({
@@ -55,15 +45,42 @@ function ModalCreateBooking({ getUsers, flightID }) {
       [e.target.name]: e.target.value,
     });
   };
-  // console.log(data);
+  console.log(data);
 
   const handleCreate = async (e) => {
     await e.preventDefault();
 
+    // const formData = new FormData();
+    // formData.append("airlines_id", data.airlines_id);
+    // formData.append("airport_depature", data.airport_depature);
+    // formData.append("airport_arrive", data.airport_arrive);
+    // formData.append("depature", data.depature);
+    // formData.append("arrive", data.arrive);
+    // formData.append("lungage", data.lungage);
+    // formData.append("reschedule", data.reschedule);
+    // formData.append("refundable", data.refundable);
+    // formData.append("meal", data.meal);
+    // formData.append("wifi", data.wifi);
+    // formData.append("price", data.price);
+    // formData.append("capacity", data.capacity);
+    // formData.append("status", data.status);
+    // formData.append("admin_id", data.admin_id);
+    // formData.append("status_transit", data.status_transit);
+    // formData.append("airport_transit_1", data.airport_transit_1);
+    // formData.append("time_transit_1", data.time_transit_1);
+    // formData.append("airport_transit_2", data.airport_transit_2);
+    // formData.append("time_transit_2", data.time_transit_2);
+    // formData.append("airport_transit_3", data.airport_transit_3);
+    // formData.append("time_transit_3", data.time_transit_3);
+    // formData.append("airport_transit_4", data.airport_transit_4);
+    // formData.append("time_transit_4", data.time_transit_4);
+    // formData.append("estimate", data.estimate);
+    // formData.append("terminal_verification", data.terminal_verification);
+
     const token = Cookies.get("token");
     await axios
-      .put(
-        `https://uticket-v2-be.vercel.app/api/v1/flight/${flightID?.toString()}`,
+      .post(
+        "https://uticket-v2-be.vercel.app/api/v1/flight",
         JSON.stringify(data),
         {
           headers: {
@@ -74,31 +91,25 @@ function ModalCreateBooking({ getUsers, flightID }) {
       )
       .then((res) => {
         console.log(res);
-        Swal.fire("Created!", "Edit Flight Success!", "success");
+        Swal.fire("Created!", "Product Created Success!", "success");
         setShow(false);
         getUsers();
       })
       .catch((err) => {
         console.log(err);
-        Swal.fire("Failed!", "Edit Flight Failed!", "error");
+        Swal.fire("Failed!", "Product Create Failed!", "error");
         setShow(false);
       });
   };
 
   return (
     <>
-      <button
-        className="btn btn-warning"
-        onClick={async () => {
-          handleShow();
-          await getFlightDetailID();
-        }}
-      >
-        Edit
+      <button className="btn btn-success" onClick={handleShow}>
+        Create
       </button>
       <Modal show={show} scrollable={false} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit Product</Modal.Title>
+          <Modal.Title>Create Product</Modal.Title>
         </Modal.Header>
         <form onSubmit={handleCreate}>
           <Modal.Body>
@@ -107,7 +118,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Airlines ID"
               name="airlines_id"
-              defaultValue={flightDetailID?.airlines_id}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -115,7 +126,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Airport ID Depature"
               name="airport_depature"
-              defaultValue={flightDetailID?.airport_depature}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -123,7 +134,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Airport ID Arrive"
               name="airport_arrive"
-              defaultValue={flightDetailID?.airport_arrive}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -131,7 +142,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Depature ( year-month-day )"
               name="depature"
-              defaultValue={flightDetailID?.depature?.split("T")[0]}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -139,7 +150,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Arrive ( year-month-day )"
               name="arrive"
-              defaultValue={flightDetailID?.arrive?.split("T")[0]}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -147,7 +158,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Lungage ( true/false )"
               name="lungage"
-              defaultValue={flightDetailID?.lungage}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -155,7 +166,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Reschedule ( true/false )"
               name="reschedule"
-              defaultValue={flightDetailID?.reschedule}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -163,7 +174,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Refundable ( true/false )"
               name="refundable"
-              defaultValue={flightDetailID?.refundable}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -171,7 +182,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Meal ( true/false )"
               name="meal"
-              defaultValue={flightDetailID?.meal}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -179,7 +190,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Wifi ( true/false )"
               name="wifi"
-              defaultValue={flightDetailID?.wifi}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -187,7 +198,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Price ( without currency symbol )"
               name="price"
-              defaultValue={flightDetailID?.price}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -195,7 +206,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Type Class ( economy/business/first_class )"
               name="type_class"
-              defaultValue={flightDetailID?.type_class}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -203,7 +214,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Capacity ( INT total )"
               name="capacity"
-              defaultValue={flightDetailID?.capacity}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -211,7 +222,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Status ( active/non_active )"
               name="status"
-              defaultValue={flightDetailID?.status}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -219,7 +230,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Admin ID"
               name="admin_id"
-              defaultValue={flightDetailID?.admin_id}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -227,7 +238,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Status Transit ( direct/transit )"
               name="status_transit"
-              defaultValue={flightDetailID?.status_transit}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -235,7 +246,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Airport ID Transit 1"
               name="airport_transit_1"
-              defaultValue={flightDetailID?.airport_transit_1}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -243,7 +254,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Time Minutes Transit 1"
               name="time_transit_1"
-              defaultValue={flightDetailID?.time_transit_1}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -251,7 +262,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Airport ID Transit 2"
               name="airport_transit_2"
-              defaultValue={flightDetailID?.airport_transit_2}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -259,7 +270,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Time Minutes Transit 2"
               name="time_transit_2"
-              defaultValue={flightDetailID?.time_transit_2}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -267,7 +278,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Airport ID Transit 3"
               name="airport_transit_3"
-              defaultValue={flightDetailID?.airport_transit_3}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -275,7 +286,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Time Minutes Transit 3"
               name="time_transit_3"
-              defaultValue={flightDetailID?.time_transit_3}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -283,7 +294,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Airport ID Transit 4"
               name="airport_transit_4"
-              defaultValue={flightDetailID?.airport_transit_4}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -291,7 +302,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="TIme Minutes Transit 4"
               name="time_transit_4"
-              defaultValue={flightDetailID?.time_transit_4}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -299,7 +310,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Estimate Minutes Flight"
               name="estimate"
-              defaultValue={flightDetailID?.estimate}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
             <input
@@ -307,7 +318,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               type="text"
               placeholder="Terminal Verification Gate ( XXX )"
               name="terminal_verification"
-              defaultValue={flightDetailID?.terminal_verification}
+              // value={data.airlines_name}
               onChange={handleChange}
             />
           </Modal.Body>
@@ -316,7 +327,7 @@ function ModalCreateBooking({ getUsers, flightID }) {
               Close
             </Button>
             <button type="submit" className="btn btn-primary">
-              Save
+              Create
             </button>
           </Modal.Footer>
         </form>

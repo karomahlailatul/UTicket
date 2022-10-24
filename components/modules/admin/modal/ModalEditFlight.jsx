@@ -7,7 +7,11 @@ import Cookies from "js-cookie";
 
 function ModalCreateBooking({ getUsers, flightID }) {
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setData([]);
+    setFlightDetailID([]);
+  };
   const handleShow = () => setShow(true);
   const [flightDetailID, setFlightDetailID] = useState([]);
 
@@ -77,11 +81,15 @@ function ModalCreateBooking({ getUsers, flightID }) {
         Swal.fire("Created!", "Edit Flight Success!", "success");
         setShow(false);
         getUsers();
+        setData([]);
+        setFlightDetailID([]);
       })
       .catch((err) => {
         console.log(err);
         Swal.fire("Failed!", "Edit Flight Failed!", "error");
         setShow(false);
+        setData([]);
+        setFlightDetailID([]);
       });
   };
 
