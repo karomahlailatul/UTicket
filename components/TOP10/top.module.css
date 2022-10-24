@@ -1,13 +1,13 @@
 .top-destination{
     height: 500px;
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: space-between; */
     background-color: #2395FF;
     color: #FFFFFF;
     border-radius: 50px;
-    margin: 40px 100px;    
+    margin: 50px auto;    
 }
 
 .topten{
@@ -49,7 +49,7 @@
 }
 
 .container_img{
-    height: 150px;
+    /* height: 150px; */
     border: 5px solid white;
     border-radius: 50%;
     padding: 9px;

@@ -1,6 +1,6 @@
 
 .container{
-    margin-left: 80px !important;
+    margin-left: 80px ;
     width: 35%;
     box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
     border-radius: 20px;
@@ -130,4 +130,16 @@
 .submit_btn > span {
     font-family: 'Poppins', sans-serif;
     
+}
+
+@media screen and (max-width: 576px) {
+    .container{
+        margin-left: -120px !important;
+        margin-top: 10px;
+        width: 85%;
+        box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
+        border-radius: 20px;
+        /* position: absolute; */
+        background: white;
+    }
 }
