@@ -20,8 +20,9 @@ export const getUserProfile = (token) => async (dispatch) => {
 export const updateUserProfile = (name, data, token) => async (dispatch) => {
     try {
 
-        const resultProfile = await axios.get(process.env.API_BACKEND + "/users/profile/", {
+        const resultProfile = await axios.get(process.env.API_BACKEND + "users/profile/", {
             headers: {
+                "Access-Control-Allow-Origin": "*",
                 Authorization: `Bearer ${token}`,
             },
         });
@@ -36,8 +37,9 @@ export const updateUserProfile = (name, data, token) => async (dispatch) => {
         form.append("address", data.address == undefined ? dataProfile.address : data.address)
         form.append("postal_code", data.postal_code == undefined ? dataProfile.postal_code : data.postal_code)
 
-        const result = await axios.put(process.env.API_BACKEND + "/users/profile?update", form, {
+        const result = await axios.put(process.env.API_BACKEND + "users/profile?update", form, {
             headers: {
+                "Access-Control-Allow-Origin": "*",
                 Authorization: `Bearer ${token}`
             },
         });
@@ -51,8 +53,9 @@ export const updateUserProfile = (name, data, token) => async (dispatch) => {
 
 export const updateProfileImage = (data, token) => async (dispatch) => {
     try {
-        const resultProfile = await axios.get(process.env.API_BACKEND + "/users/profile/", {
+        const resultProfile = await axios.get(process.env.API_BACKEND + "users/profile/", {
             headers: {
+                "Access-Control-Allow-Origin": "*",
                 Authorization: `Bearer ${token}`,
             },
         });
@@ -66,8 +69,9 @@ export const updateProfileImage = (data, token) => async (dispatch) => {
         form.append("address", dataProfile.address)
         form.append("postal_code", dataProfile.postal_code)
         form.append("picture", data)
-        const result = await axios.put(process.env.API_BACKEND + "/users/profile?update", form, {
+        const result = await axios.put(process.env.API_BACKEND + "users/profile?update", form, {
             headers: {
+                "Access-Control-Allow-Origin": "*",
                 Authorization: `Bearer ${token}`
             },
         });

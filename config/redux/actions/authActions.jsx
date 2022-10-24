@@ -7,7 +7,11 @@ import Cookies from "js-cookie";
 export const register = (data, router, setLoading) => async (dispatch) => {
     console.log('data: ', data);
     try {
-        const result = await axios.post(process.env.API_BACKEND + "users/register", data);
+        const result = await axios.post(process.env.API_BACKEND + "users/register", data, {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+            }
+        });
         const user = result.data;
         console.log('user: ', user);
         toast.success(user.message, { toastId: "successSignUp" });
@@ -24,7 +28,11 @@ export const register = (data, router, setLoading) => async (dispatch) => {
 export const login = (data, router, setLoading) => async (dispatch) => {
     console.log('data: ', data)
     try {
-        const result = await axios.post(process.env.API_BACKEND + "users/login", data);
+        const result = await axios.post(process.env.API_BACKEND + "users/login", data, {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+            }
+        });
         const user = result.data.data;
         console.log('user: ', user);
         toast.success("Sign In Success. Welcome " + user.name, { toastId: "successSignIn" });

@@ -4,8 +4,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 export const getCreditCard = (token, user_id) => async (dispatch) => {
     try {
-        const result = await axios.get(process.env.API_BACKEND + "/creditCard?searchby=id&search=" + user_id, {
+        const result = await axios.get(process.env.API_BACKEND + "creditCard?searchby=id&search=" + user_id, {
             headers: {
+                "Access-Control-Allow-Origin": "*",
                 Authorization: `Bearer ${token}`,
             },
         });
@@ -25,8 +26,9 @@ export const createCreditCard = (token, data, user_id) => async (dispatch) => {
         form.append("cc_vcc", data.cc_vcc)
         form.append("cc_exp", data.cc_exp)
         form.append("users_id", user_id)
-        const result = await axios.post(process.env.API_BACKEND + "/creditCard", form, {
+        const result = await axios.post(process.env.API_BACKEND + "creditCard", form, {
             headers: {
+                "Access-Control-Allow-Origin": "*",
                 Authorization: `Bearer ${token}`,
             },
         });
