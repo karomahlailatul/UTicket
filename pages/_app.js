@@ -10,7 +10,7 @@ import Navbar from "../components/navbarProfile";
 import { useEffect, Fragment } from "react";
 import { ToastContainer } from "react-toastify";
 import { Provider } from "react-redux";
-import { wrapper, store } from "../config/redux/store";
+import { store } from "../config/redux/store";
 
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
@@ -67,7 +67,7 @@ const MyApp = ({ Component, pageProps }) => {
   );
 };
 
-export default wrapper.withRedux(MyApp);
+export default MyApp
 
 MyApp.getInitialProps = async ({ ctx }) => {
   const token = ctx.req?.cookies?.token || null;

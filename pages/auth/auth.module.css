@@ -1,3 +1,8 @@
+.container{
+    display: flex;
+    height: 100vh;
+}
+
 .divider {
     width: 55%;
     display: flex;
@@ -138,5 +143,15 @@
 
     .auth{
         width: 100%;
+        margin: 50px;
+    }
+
+    .title{
+        margin-top: 5.308rem;
+    }
+
+    .container{
+        display: flex;
+        height: auto;
     }
 }

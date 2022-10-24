@@ -32,7 +32,7 @@ const Signup = () => {
     }
 
     return (
-        <div style={{ display: "flex" }}>
+        <div className={styles.container}>
             <div className={styles.divider}>
                 <BannerAuth />
             </div>

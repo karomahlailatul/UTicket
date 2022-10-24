@@ -81,24 +81,14 @@
     align-items: center;
 }
 
-.waiting-status{
-    padding: 0.5rem 1rem;
-    height: 36px;
-    background: #FF7F23;
-    border-radius: 6px;
+.pending-status{
     font-size: 14px;
-    text-align: center;
-    color: #FFFFFF;
+    color: #FF0000;
 }
 
-.issue-status{
-    padding: 0.5rem 1rem;
-    height: 36px;
-    background: #4FCF4D;
-    border-radius: 6px;
+.complete-status{
     font-size: 14px;
-    text-align: center;
-    color: #FFFFFF;
+    color: #4FCF4D;
 }
 
 .bottom-card{

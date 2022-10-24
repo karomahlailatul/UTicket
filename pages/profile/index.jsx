@@ -1,70 +1,65 @@
-import axios from 'axios'
-import React, { useState } from 'react'
+// import axios from 'axios'
+import React, { useEffect } from 'react'
 import FormProfile from '../../components/formProfile'
-// import NavbarProfile from '../../components/navbarProfile'
+// import InvoiceTicket from '../../components/invoiceTicket'
+import NavbarProfile from '../../components/navbarProfile'
 import ProfileCard from '../../components/profileCard'
-import TabMyBooking from '../../components/tabMyBooking'
+// import TabMyBooking from '../../components/tabMyBooking'
 import styles from './profile.module.css'
+import { useDispatch, useSelector } from 'react-redux';
+import "react-toastify/dist/ReactToastify.css";
+import { getUserProfile } from '../../config/redux/actions/profileActions';
 
 export const getServerSideProps = async (ctx) => {
   const { cookies } = ctx.req
   const token = cookies.token
-  console.log('cookies-profile: ', cookies);
-  const resProfile = await axios.get(process.env.API_BACKEND + "/users/profile/", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    }
-  })
-
-  const resCC = await axios.get(process.env.API_BACKEND + "/creditCard", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-
-  console.log('resProfile: ', resProfile);
+  const user_id = cookies.user_id
+  
   return {
     props: {
-      dataProfile: resProfile.data.data,
-      dataCC: resCC.data?.data,
+      user_id: user_id,
+      token: token
     }
   };
 }
 
 
 
-const Profile = ({ dataProfile, dataCC }) => {
-  const [focus, setFocus] = useState("profile");
-  // console.log('data-profile: ', dataProfile);
-  // console.log('data-CC: ', dataCC);
+const Profile = ({token, user_id}) => {
+    const dispatch = useDispatch()
+    const { dataProfile } = useSelector((state) => state.profile)
+
+  useEffect(() => {
+    dispatch(getUserProfile(token))
+  }, [token, dispatch])
 
   return (
     <div className={styles.container}>
-      {/* <NavbarProfile setFocus={setFocus} /> */}
+      <NavbarProfile/>
       <div>
         <div className={styles.wrapper}>
-          
-          <div className={styles.sect1}>
             <ProfileCard
-              picture={dataProfile?.picture}
-              name={dataProfile?.name}
-              dataCC={dataCC}
-              setFocus={setFocus}
+              picture={dataProfile.picture}
+              name={dataProfile.name}
+              country={dataProfile.country}
+              city= {dataProfile.city}
+              token={token}
+              user_id={user_id}
             />
-          </div>
-          {focus === "my-booking" ?
-          <TabMyBooking/> :
-           focus === "profile" ?
+          {/* <TabMyBooking />  */}
           <FormProfile
-            email={dataProfile?.email}
-            username={dataProfile?.username}
-            country={dataProfile?.country}
-            city={dataProfile?.city}
-            phone={dataProfile?.phone}
-            address={dataProfile?.address}
-            postal_code={dataProfile?.postal_code}
-          /> : ""
-          }
+            name={dataProfile.name}
+            email={dataProfile.email}
+            username={dataProfile.username}
+            country={dataProfile.country}
+            city= {dataProfile.city}
+            phone= {dataProfile.phone}
+            address={dataProfile.address}
+            postal_code={dataProfile.postal_code}
+          />  
+          
+          {/* <InvoiceTicket />  */}
+          
         </div>
       </div>
     </div>
