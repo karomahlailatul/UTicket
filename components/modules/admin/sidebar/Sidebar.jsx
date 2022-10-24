@@ -9,23 +9,6 @@ export default function Sidebar() {
       <div className="position-sticky pt-3 sidebar-sticky">
         <ul className="nav flex-column">
           <li className="nav-item">
-            <a
-              className="nav-link active"
-              aria-current="page"
-              href="./adminAirline"
-            >
-              <span data-feather="home" className="align-text-bottom "></span>
-              Airlines
-            </a>
-          </li>
-
-          <li className="nav-item">
-            <a className="nav-link" href="adminAirport">
-              <span data-feather="file" className="align-text-bottom"></span>
-              Airport
-            </a>
-          </li>
-          <li className="nav-item">
             <a className="nav-link" href="./adminFlight">
               <span data-feather="file" className="align-text-bottom"></span>
               Flight

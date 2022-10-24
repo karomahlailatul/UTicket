@@ -16,13 +16,14 @@ function ModalEditBooking({
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [users, setUser] = useState([]);
+
   useEffect(() => {
     getUsers();
   }, []);
 
   const getUsers = async () => {
     const response = await axios.get(
-      "https://uticket-v2-be.vercel.app/api/v1/booking",
+      `https://uticket-v2-be.vercel.app/api/v1/booking`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -31,12 +32,6 @@ function ModalEditBooking({
     );
     setUser(response.data.data);
   };
-  console.log(users);
-
-  // const getID = (id) => {
-  //   const ID = users[id].id;
-  //   console.log(ID);
-  // };
 
   const [data, setData] = useState({
     airlines_name,
@@ -47,7 +42,7 @@ function ModalEditBooking({
   });
 
   console.log(data);
-
+  console.log(users);
   const handleChange = (e) => {
     setData({
       ...data,
@@ -70,7 +65,7 @@ function ModalEditBooking({
     const token = Cookies.get("token");
     axios
       .put(
-        `https://uticket-v2-be.vercel.app/api/v1/booking/da81f3e1-7fda-4906-bc3d-bd6b7c739382`,
+        `https://uticket-v2-be.vercel.app/api/v1/booking/a2ce6b56-7616-46fd-a5da-08aa24602f75`,
         formData,
         {
           headers: {
