@@ -11,9 +11,11 @@ function ModalCreateBooking() {
   const handleShow = () => setShow(true);
 
   const [data, setData] = useState({
-    name: "",
-    description: "",
-    support: "",
+    airlines_name: "",
+    booking_fullname: "",
+    booking_email: "",
+    booking_phone: "",
+    users_country: "",
   });
 
   const handleChange = (e) => {
@@ -28,9 +30,11 @@ function ModalCreateBooking() {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append("name", data.name);
-    formData.append("description", data.description);
-    formData.append("support", data.support);
+    formData.append("airlines_name", data.airlines_name);
+    formData.append("booking_fullname", data.booking_fullname);
+    formData.append("booking_email", data.booking_email);
+    formData.append("booking_phone", data.booking_phone);
+    formData.append("users_country", data.users_country);
     const token = Cookies.get("token");
     axios
       .post("https://uticket-v2-be.vercel.app/api/v1/booking", formData, {
@@ -65,25 +69,41 @@ function ModalCreateBooking() {
             <input
               className="form-control mt-3"
               type="text"
-              placeholder="name"
-              name="name"
-              value={data.name}
+              placeholder="Airline Name"
+              name="airlines_name"
+              value={data.airlines_name}
               onChange={handleChange}
             />
             <input
               className="form-control mt-3"
               type="text"
-              placeholder="description"
-              name="description"
-              value={data.description}
+              placeholder="Name"
+              name="booking_fullname"
+              value={data.booking_fullname}
               onChange={handleChange}
             />
             <input
               className="form-control mt-3"
               type="text"
-              placeholder="support"
-              name="support"
-              value={data.support}
+              placeholder="Email"
+              name="booking_email"
+              value={data.booking_email}
+              onChange={handleChange}
+            />
+            <input
+              className="form-control mt-3"
+              type="text"
+              placeholder="Phone"
+              name="booking_phone"
+              value={data.booking_phone}
+              onChange={handleChange}
+            />
+            <input
+              className="form-control mt-3"
+              type="text"
+              placeholder="Country"
+              name="users_country"
+              value={data.users_country}
               onChange={handleChange}
             />
           </Modal.Body>
