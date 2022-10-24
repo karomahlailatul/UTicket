@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react'
 import FormProfile from '../../components/formProfile'
 // import InvoiceTicket from '../../components/invoiceTicket'
-import NavbarProfile from '../../components/navbarProfile'
+// import NavbarProfile from '../../components/navbarProfile'
 import ProfileCard from '../../components/profileCard'
 // import TabMyBooking from '../../components/tabMyBooking'
 import styles from './profile.module.css'
