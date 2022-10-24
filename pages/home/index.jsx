@@ -7,8 +7,8 @@ import paris  from '../../assets/img/home/destinasi.svg'
 import Image from "next/image";
 import Trending from "../../components/Trending";
 import TopTen from "../../components/TOP10";
-import SearchPopUp from "../../components/searchPopUp/searchPopUp";
-import NavbarProfile from "../../components/navbarProfile";
+// import SearchPopUp from "../../components/searchPopUp/searchPopUp";
+// import NavbarProfile from "../../components/navbarProfile";
 
 
 const Home = () => {

@@ -30,10 +30,10 @@ const koper = findIconDefinition({
 function Search() {
   // const dispatch = useDispatch();
   // const datas = useSelector((state) => state.airlines);
-  const [airlines, setAirlines] = useState('')
+  // const [airlines, setAirlines] = useState('')
   const [dataFrom, setDataFrom] = useState([]);
   const [dataTo, setDataTo] = useState([]);
-  const [dataAirlines, setDataAirlines] = useState([])
+  // const [dataAirlines, setDataAirlines] = useState([])
   // const [dataCityTo, setDataCityTo] = useState([])
   const [sort, setSort] = useState('desc')
   const [dataTiket, setDataTiket] = useState([]);
@@ -42,7 +42,7 @@ function Search() {
   console.log(dataTiket);
   // console.log(idFrom)
   // console.log(idTo)
-  console.log(dataAirlines)
+  // console.log(dataAirlines)
   // console.log(dataCity[0].id)
   // console.log(dataCityTo[0].id)
   // data.map(iterm =>{
@@ -51,11 +51,11 @@ function Search() {
   // dataTiket.map(item =>{
   //   console.log(item)
   // })
-  const fetchAirPort = async() =>{
-    const result = await axios.get(`${process.env.API_BACKEND}airlines?&sortby=name&sort=asc`)
+  // const fetchAirPort = async() =>{
+  //   const result = await axios.get(`${process.env.API_BACKEND}airlines?&sortby=name&sort=asc`)
 
-    setDataAirlines(result.data.data)
-  }
+  //   setDataAirlines(result.data.data)
+  // }
   // const handleAirlines = (e) =>{
   //   if(e.target.checked === true){
   //     console.log('true')
@@ -99,7 +99,7 @@ function Search() {
   };
   useEffect(() => {
     handleSearch();
-    fetchAirPort();
+    // fetchAirPort();
   }, []);
 
   return (
@@ -682,8 +682,8 @@ function Search() {
 
         <div className="w-100">
           {dataTiket?.map((item, index) => (
-            <Link href={`detailFlight/${item.id}`}>
-              <div className={`${styles.m_ticket} mb-3`} key={index}>
+            <Link href={`detailFlight/${item.id}`} key={index}>
+              <div className={`${styles.m_ticket} mb-3`} >
                 <div className={styles.m_airline}>
                   <div>
                     <Image width={100} height={50} src={item.airlines_logo} />

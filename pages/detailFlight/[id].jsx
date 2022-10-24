@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./detailFlight.module.css";
 import Banner from '../../assets/img/detailFlight/banner-lg.svg'
-import Banner1 from '../../assets/img/detailFlight/banner-sm.svg'
+// import Banner1 from '../../assets/img/detailFlight/banner-sm.svg'
 import Image from "next/image";
 // import LogoGaruda from '../../assets/img/search/Logo-garuda.svg'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,7 +16,7 @@ const warning = findIconDefinition({
   prefix: "fas",
   iconName: "triangle-exclamation",
 });
-const check = findIconDefinition({ prefix: "fas", iconName: "circle-check" });
+// const check = findIconDefinition({ prefix: "fas", iconName: "circle-check" });
 const wifi = findIconDefinition({ prefix: "fas", iconName: "wifi" });
 const burger = findIconDefinition({ prefix: "fas", iconName: "burger" });
 
@@ -26,7 +26,7 @@ function DetailFlight() {
   const [dataFlight, setDataFlight] = useState([]);
   const [dataProfile, setDataProfile] = useState([]);
   // const [id, setId] = useState((router.query.id))
-  const id = router.query.id
+  // const id = router.query.id
   const [check, setChecked] = useState(false);
   // console.log(dataFlight)
   // console.log(id);

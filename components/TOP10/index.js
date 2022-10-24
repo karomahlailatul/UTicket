@@ -9,7 +9,7 @@ import styles from "./top.module.css";
 import axios from "axios";
 // import btnPrev from '../../assets/logo/logo-prev.svg'
 // import btnback from '../../assets/logo/logo-back.svg'
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 import {
   Navigation,
   Pagination,

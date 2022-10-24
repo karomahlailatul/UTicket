@@ -9,9 +9,9 @@ import more from "../../assets/img/home/more-btn.svg";
 import styles from "./trend.module.css";
 import Image from "next/image";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { DestinationAction } from "../../config/redux/actions/destinationAction";
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+// import { useDispatch, useSelector } from "react-redux";
+// import { DestinationAction } from "../../config/redux/actions/destinationAction";
+import { Navigation, Pagination} from 'swiper';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -93,8 +93,8 @@ function Trending() {
         >
           {data?.map((item, index) => {
             return (
-              <SwiperSlide>
-                <div className={styles.card} key={index}>
+              <SwiperSlide key={index}>
+                <div className={styles.card} >
                   <p>{item.city}, </p>
                   <div className={styles.detail}>
                     <span>{item.country}</span>
