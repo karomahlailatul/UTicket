@@ -1,34 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# uTicket 
 
-## Getting Started
+## About the project
+uTicket Built up with NextJs with backend ExpressJS and deployment on Vercel.
 
-First, run the development server:
+## Usage 
 
-```bash
-npm run dev
-# or
-yarn dev
+### Clone
+```shell
+git clone https://github.com/karomahlailatul/uTicket.git
+```
+### Installing 
+```shell
+npm i;
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Testing
+```shell
+npm run start;
+```
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Screenshot
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![uticket vercel app_home](https://user-images.githubusercontent.com/37212759/200730150-fe05cf8a-86bf-44c5-be15-18b7bf311dac.png)
+![uticket vercel app_home (1)](https://user-images.githubusercontent.com/37212759/200730216-1fb8ffa3-cc9b-4c92-9a83-7b4c20c018cd.png)
+![uticket vercel app_home (2)](https://user-images.githubusercontent.com/37212759/200730220-5a6061a4-652b-4850-aa9a-dbc0ca9c20fa.png)
+![uticket vercel app_search](https://user-images.githubusercontent.com/37212759/200730227-d586b168-3355-4102-bf2e-123f26f4d5fb.png)
+![uticket vercel app_detailFlight_IDN-SUB-IDN-KNO-360-0CC995F7552CDBE6](https://user-images.githubusercontent.com/37212759/200730232-5f9482ba-a7af-48ba-b230-264431efa941.png)
